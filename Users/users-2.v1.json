@@ -1,0 +1,389 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "users",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://dev.dhakon/api/v1",
+      "description": "Development"
+    },
+    {
+      "url": "https://staging.dhakon/api/v1",
+      "description": "Staging"
+    },
+    {
+      "url": "https://dhakon/api/v1",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/users/{userId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "userId",
+          "in": "path",
+          "required": true,
+          "description": "Id of an existing user."
+        }
+      ],
+      "get": {
+        "summary": "Get User Info by User ID",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "User Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./Users.v1.json"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                      "first_name": "Muhammad",
+                      "last_name": "Najib",
+                      "email": "imelenajib@gmail.com",
+                      "phone_number": "+6281234567890",
+                      "avatar": "http://localhost:3000/default_image.png",
+                      "gender": null,
+                      "role": "DEMANDER",
+                      "password": "pa$$word",
+                      "confirm_password": "pa$$word",
+                      "password_change_log": [
+                        {
+                          "currently": true,
+                          "password": "pa$$word",
+                          "previous password": "pa$$word",
+                          "location": "Jakarta, Jakarta",
+                          "changed_at": "2019-08-24T14:15:22Z"
+                        },
+                        {
+                          "currently": false,
+                          "password": "pa$$word",
+                          "previous password": "pa$$word",
+                          "location": "Jakarta, Jakarta",
+                          "changed_at": "2019-08-24T14:15:22Z"
+                        }
+                      ],
+                      "status": "ACTIVE",
+                      "email_verified": false,
+                      "phone_verified": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../Models/res_error.v1.json"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "code": 404,
+                      "success": false,
+                      "message": "User Not Found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-users-userId",
+        "description": "Retrieve the information of the user with the matching user ID.",
+        "security": [
+          {
+            "Token": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            },
+            "in": "header",
+            "name": "Content-Type"
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update User Information",
+        "operationId": "patch-users-userId",
+        "responses": {
+          "200": {
+            "description": "User Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./Users.v1.json"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                      "first_name": "Muhammad",
+                      "last_name": "Najib",
+                      "email": "imelenajib@gmail.com",
+                      "phone_number": "+6281234567890",
+                      "avatar": "http://localhost:3000/default_image.png",
+                      "gender": null,
+                      "role": "DEMANDER",
+                      "password": "pa$$word",
+                      "confirm_password": "pa$$word",
+                      "password_change_log": [
+                        {
+                          "currently": true,
+                          "password": "pa$$word",
+                          "previous password": "pa$$word",
+                          "location": "Jakarta, Jakarta",
+                          "changed_at": "2019-08-24T14:15:22Z"
+                        },
+                        {
+                          "currently": false,
+                          "password": "pa$$word",
+                          "previous password": "pa$$word",
+                          "location": "Jakarta, Jakarta",
+                          "changed_at": "2019-08-24T14:15:22Z"
+                        }
+                      ],
+                      "status": "ACTIVE",
+                      "email_verified": false,
+                      "phone_verified": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../Models/res_error.v1.json"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "code": 404,
+                      "success": false,
+                      "message": "User Not Found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Email Already Taken",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../Models/res_error.v1.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": 409,
+                      "success": true,
+                      "message": "Conflict",
+                      "errors": [
+                        {
+                          "message": "Email Already Taken",
+                          "code": 29,
+                          "field": "Email"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Update the infromation of an existing user.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "first_name": {
+                    "type": "string",
+                    "example": "Muhammad"
+                  },
+                  "last_name": {
+                    "type": "string",
+                    "example": "Najib"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "imelenajib@gmail.com"
+                  },
+                  "phone_number": {
+                    "type": "string",
+                    "example": "081234567890"
+                  },
+                  "avatar": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              },
+              "examples": {
+                "Change Fully": {
+                  "value": {
+                    "first_name": "Muhammad",
+                    "last_name": "Najib",
+                    "email": "imelenajib@gmail.com",
+                    "phone_number": "081234567890",
+                    "avatar": "http://example.com"
+                  }
+                },
+                "Change Name Only": {
+                  "value": {
+                    "first_name": "Muhammad",
+                    "last_name": "Najib"
+                  }
+                },
+                "Change Email Only": {
+                  "value": {
+                    "email": "imelenajib@gmail.com"
+                  }
+                },
+                "Change Phone Only": {
+                  "value": {
+                    "phone_number": "081234567890"
+                  }
+                },
+                "Change Avatar": {
+                  "value": {
+                    "avatar": "http://example.com"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Patch user properties to update."
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            },
+            "in": "header",
+            "name": "Content-Type"
+          }
+        ]
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../Models/res_success.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "./Users-Partial.v1.json"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "code": 200,
+                      "success": true,
+                      "message": "Get profile data successfully",
+                      "data_profile": {
+                        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                        "first_name": "Muhammad",
+                        "last_name": "Najib",
+                        "email": "imelenajib@gmail.com",
+                        "phone_number": "+6281234567890",
+                        "avatar": "http://localhost:3000/default_image.png",
+                        "gender": null,
+                        "role": "DEMANDER",
+                        "status": "ACTIVE",
+                        "email_verified": false,
+                        "phone_verified": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-users",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "default": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+            },
+            "in": "query",
+            "name": "profiles",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            },
+            "in": "header",
+            "name": "Content-Type",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "Token": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": ""
+      }
+    }
+  }
+}

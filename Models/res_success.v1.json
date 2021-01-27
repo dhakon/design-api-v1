@@ -1,0 +1,16 @@
+{
+  "title": "res_success",
+  "type": "object",
+  "x-examples": {},
+  "properties": {
+    "code": {
+      "type": "number"
+    },
+    "success": {
+      "type": "boolean"
+    },
+    "message": {
+      "type": "string"
+    }
+  }
+}

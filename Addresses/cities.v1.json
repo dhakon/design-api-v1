@@ -1,0 +1,25 @@
+{
+  "title": "cities",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "city": {
+      "type": "string",
+      "example": "Kota Surabaya"
+    },
+    "country_id": {
+      "type": "string",
+      "format": "uuid"
+    }
+  },
+  "x-examples": {
+    "Example": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "city": "Kota Surabaya",
+      "country_id": "b42f7153-60f9-4aff-a5b5-21576be4161e"
+    }
+  }
+}

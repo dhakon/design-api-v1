@@ -1,0 +1,47 @@
+{
+  "description": "",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "number"
+    },
+    "success": {
+      "type": "boolean"
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1
+    },
+    "errors": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "required": [
+          "message",
+          "code",
+          "field"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "code": {
+            "type": "number"
+          },
+          "field": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "code",
+    "success",
+    "message",
+    "errors"
+  ]
+}

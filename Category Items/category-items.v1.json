@@ -1,0 +1,25 @@
+{
+  "title": "item-categories",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "type": "string",
+      "example": "Bahan Pangan"
+    },
+    "image": {
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "x-examples": {
+    "Example": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "name": "Bahan Pangan",
+      "image": "http://example.com/image_bahan_pangan.png"
+    }
+  }
+}

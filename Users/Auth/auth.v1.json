@@ -1,0 +1,638 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "auth",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "https://dev.dhakon/api/v1",
+      "description": "Development"
+    },
+    {
+      "url": "https://staging.dhakon/api/v1",
+      "description": "Staging"
+    },
+    {
+      "url": "https://dhakon/api/v1",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/users/register": {
+      "post": {
+        "summary": "Register",
+        "operationId": "post-login",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../../Models/res_success.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "../Users.v1.json"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "code": 201,
+                      "success": true,
+                      "message": "User has successfully registered",
+                      "data": {
+                        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                        "first_name": "Muhammad",
+                        "last_name": "Najib",
+                        "email": "imelenajib@gmail.com",
+                        "phone_number": "+6281234567890",
+                        "avatar": "http://localhost:3000/default_image.png",
+                        "gender": null,
+                        "role": null,
+                        "password": "pa$$word",
+                        "confirm_password": "pa$$word",
+                        "password_change_log": [
+                          {
+                            "currently": true,
+                            "password": "pa$$word",
+                            "previous password": "pa$$word",
+                            "location": "Jakarta, Jakarta",
+                            "changed_at": "2019-08-24T14:15:22Z"
+                          },
+                          {
+                            "currently": false,
+                            "password": "pa$$word",
+                            "previous password": "pa$$word",
+                            "location": "Jakarta, Jakarta",
+                            "changed_at": "2019-08-24T14:15:22Z"
+                          }
+                        ],
+                        "status": "ACTIVE",
+                        "email_verified": false,
+                        "phone_verified": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/res_error.v1.json"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "code": 400,
+                      "success": false,
+                      "message": "Validation errors in your request",
+                      "errors": [
+                        {
+                          "message": "Email already used",
+                          "code": 34,
+                          "field": "email"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "first_name": {
+                    "type": "string",
+                    "example": "Muhammad"
+                  },
+                  "last_name": {
+                    "type": "string",
+                    "example": "Najib"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "imelenajib@gmail.com"
+                  },
+                  "number_phone": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password"
+                  },
+                  "confirm_password": {
+                    "type": "string",
+                    "format": "password"
+                  }
+                },
+                "required": [
+                  "first_name",
+                  "last_name",
+                  "email",
+                  "number_phone",
+                  "password",
+                  "confirm_password"
+                ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "first_name": "Muhammad",
+                    "last_name": "Najib",
+                    "email": "imelenajib@gmail.com",
+                    "number_phone": "+6281234567890",
+                    "password": "pa$$word",
+                    "confirm_password": "pa$$word"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "Endpoint for process registration new user"
+      },
+      "parameters": []
+    },
+    "/users/login": {
+      "post": {
+        "summary": "",
+        "operationId": "post-account-login",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../../Models/res_success.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "../Users.v1.json"
+                            },
+                            {
+                              "$ref": "token.v1.json"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "code": 201,
+                      "success": true,
+                      "message": "User logged in successfully",
+                      "data": {
+                        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                        "first_name": "Muhammad",
+                        "last_name": "Najib",
+                        "email": "imelenajib@gmail.com",
+                        "phone_number": "+6281234567890",
+                        "avatar": "http://localhost:3000/default_image.png",
+                        "gender": null,
+                        "role": "DEMANDER",
+                        "password": "pa$$word",
+                        "confirm_password": "pa$$word",
+                        "password_change_log": [
+                          {
+                            "currently": true,
+                            "password": "pa$$word",
+                            "previous password": "pa$$word",
+                            "location": "Jakarta, Jakarta",
+                            "changed_at": "2019-08-24T14:15:22Z"
+                          },
+                          {
+                            "currently": false,
+                            "password": "pa$$word",
+                            "previous password": "pa$$word",
+                            "location": "Jakarta, Jakarta",
+                            "changed_at": "2019-08-24T14:15:22Z"
+                          }
+                        ],
+                        "status": "ACTIVE",
+                        "email_verified": false,
+                        "phone_verified": false,
+                        "token": {
+                          "token_type": "Bearer",
+                          "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiNotyEt1dCI6Ik9SZVo2SFE4SlM2aXBVWjJ5cDFNOGhUMVhRYyIsImtpZCI6Ik9SZVo2SFE4SlM2aXBVWjJ5cDFNOGhUMVhRYyJ9",
+                          "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiNotyEt1dCI6Ik9SZVo2SFE4SlM2aXBVWjJ5cDFNOGhUMVhRYyIsImtpZCI6Ik9SZVo2SFE4SlM2aXBVWjJ5cDFNOGhUMVhRYyJ9",
+                          "expires_in": "30734400"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/res_error.v1.json"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "code": 400,
+                      "success": false,
+                      "message": "Invalid email or password",
+                      "errors": [
+                        {
+                          "message": "Wrong password",
+                          "code": 12,
+                          "field": "password"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Endpoint for login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "imelenajib@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "p[]\\p[]\\"
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "email": "imelenajib@gmail.com",
+                    "password": "p[]\\p[]\\"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
+    },
+    "/users/forgot_password": {
+      "parameters": [],
+      "post": {
+        "summary": "Forgot Password",
+        "operationId": "post-accounts-change_password",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../../Models/res_success.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "first_name": {
+                              "type": "string"
+                            },
+                            "last_name": {
+                              "type": "string"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email"
+                            },
+                            "subject": {
+                              "type": "string"
+                            },
+                            "redirect_url": {
+                              "type": "string",
+                              "format": "uri"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "code": 201,
+                      "success": true,
+                      "message": "Success send email for reset password",
+                      "data": {
+                        "first_name": "Muhammad",
+                        "last_name": "Najib",
+                        "email": "imelenajib@gmail.com",
+                        "subject": "Reset Password - Dhakon",
+                        "redirect_url": "http://dev.dhakon/api/v1/accounts/verify/reset_token"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  }
+                },
+                "required": [
+                  "email"
+                ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "email": "imelenajib@gmail.com"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/reset_password/{token}": {
+      "post": {
+        "summary": "Reset Password",
+        "operationId": "post-accounts-reset_password",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../../Models/res_success.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "format": "uuid"
+                                },
+                                "first_name": {
+                                  "type": "string",
+                                  "example": "Muhammad"
+                                },
+                                "last_name": {
+                                  "type": "string",
+                                  "example": "Najib"
+                                },
+                                "email": {
+                                  "type": "string",
+                                  "format": "email",
+                                  "example": "imelenajib@gmail.com"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "token.v1.json"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "code": 201,
+                      "success": true,
+                      "message": "Reset password successfully",
+                      "data": {
+                        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                        "first_name": "Muhammad",
+                        "last_name": "Najib",
+                        "email": "imelenajib@gmail.com",
+                        "token": {
+                          "token_type": "Bearer",
+                          "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiNotyEt1dCI6Ik9SZVo2SFE4SlM2aXBVWjJ5cDFNOGhUMVhRYyIsImtpZCI6Ik9SZVo2SFE4SlM2aXBVWjJ5cDFNOGhUMVhRYyJ9",
+                          "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiNotyEt1dCI6Ik9SZVo2SFE4SlM2aXBVWjJ5cDFNOGhUMVhRYyIsImtpZCI6Ik9SZVo2SFE4SlM2aXBVWjJ5cDFNOGhUMVhRYyJ9",
+                          "expires_in": "30734400"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "new_password": {
+                    "type": "string",
+                    "format": "password"
+                  },
+                  "confirm_new_password": {
+                    "type": "string",
+                    "format": "password"
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "new_password": "pa$$word",
+                    "confirm_new_password": "pa$$word"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "token",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/users/logout": {
+      "post": {
+        "summary": "",
+        "operationId": "post-account-logout",
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the requested representation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../../Models/res_success.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "user_id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "logout": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "code": 200,
+                      "success": true,
+                      "message": "Logout successfully",
+                      "data": {
+                        "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+                        "logout": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The authentication information was not provided in the correct format.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../../Models/res_error.v1.json"
+                    }
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "code": 400,
+                      "success": false,
+                      "message": "Invalid Request: Invalid user authentication ID or invalid request format"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "in": "query",
+            "name": "userId",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            },
+            "in": "header",
+            "name": "Content-Type"
+          }
+        ],
+        "description": "",
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "Token": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

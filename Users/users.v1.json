@@ -1,0 +1,127 @@
+{
+  "description": "",
+  "type": "object",
+  "x-examples": {
+    "example-1": {
+      "id": "string",
+      "first_name": "string",
+      "last_name": "string",
+      "email": "string",
+      "phone_number": "string",
+      "avatar": "string",
+      "gender": null,
+      "role": null,
+      "password": "string",
+      "confirm_password": "string",
+      "status": "string",
+      "email_verified": true,
+      "phone_verified": true,
+      "password_change_log": [
+        {
+          "currently": true,
+          "password": "string",
+          "previous password": "string",
+          "location": "string",
+          "changed_at": "string"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "first_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "last_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "email": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phone_number": {
+      "type": "string",
+      "minLength": 1
+    },
+    "avatar": {
+      "type": "string",
+      "minLength": 1,
+      "format": "uri"
+    },
+    "gender": {},
+    "role": {},
+    "password": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confirm_password": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "email_verified": {
+      "type": "boolean"
+    },
+    "phone_verified": {
+      "type": "boolean"
+    },
+    "password_change_log": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "currently": {
+            "type": "boolean"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 1
+          },
+          "previous password": {
+            "type": "string",
+            "minLength": 1
+          },
+          "location": {
+            "type": "string",
+            "minLength": 1
+          },
+          "changed_at": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "currently",
+          "password",
+          "previous password",
+          "location",
+          "changed_at"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "first_name",
+    "last_name",
+    "email",
+    "phone_number",
+    "avatar",
+    "password",
+    "confirm_password",
+    "status",
+    "email_verified",
+    "phone_verified",
+    "password_change_log"
+  ]
+}

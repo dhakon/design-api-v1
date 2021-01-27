@@ -1,0 +1,20 @@
+{
+  "title": "countries",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "country": {
+      "type": "string",
+      "example": "Indonesia"
+    }
+  },
+  "x-examples": {
+    "Example": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "country": "Indonesia"
+    }
+  }
+}

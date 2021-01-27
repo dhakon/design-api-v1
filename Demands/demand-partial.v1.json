@@ -1,0 +1,82 @@
+{
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category_item_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "item": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "qty": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "name",
+        "qty",
+        "unit"
+      ]
+    },
+    "city_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "deadline": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "category_item_id",
+    "item",
+    "city_id",
+    "description",
+    "deadline",
+    "status"
+  ],
+  "x-examples": {
+    "Example": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "title": "Saya butuh bawang merah",
+      "category_item_id": "46fa068d-c0a7-40ac-ad84-951892b10de9",
+      "item": {
+        "name": "Bawang Merah",
+        "qty": "10",
+        "unit": "Kwintal"
+      },
+      "city_id": "4e4d55fa-e3bf-4bdb-9825-519278b117b5",
+      "description": "Tawarkan bawang merah terbaik kamu",
+      "deadline": "2019-08-24",
+      "status": "OPEN"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "title": "address",
+  "type": "object",
+  "x-examples": {
+    "Example": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+      "label": "Rumah",
+      "address": "Jalan Arteri Raya 17, RT 06 RW 07, Kelurahan Macanan, Kecamatan Bumiayu",
+      "address2": null,
+      "district": "Kota Surabaya, Jawa Timur",
+      "city_id": "4e4d55fa-e3bf-4bdb-9825-519278b117b5",
+      "postal_code": 224352,
+      "receiver": {
+        "name": "Adinda Kirana",
+        "phone_number": "081800100700"
+      },
+      "geometry": {
+        "location": [
+          -87.741707,
+          42.108308
+        ],
+        "location_type": "APPROXIMATE"
+      }
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "user_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "label": {
+      "type": "string",
+      "example": "Rumah"
+    },
+    "address": {
+      "type": "string",
+      "example": "Jalan Arteri Raya 17, RT 06 RW 07, Kelurahan Macanan, Kecamatan Bumiayu"
+    },
+    "address2": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "district": {
+      "type": "string",
+      "example": "Kota Surabaya, Jawa Timur"
+    },
+    "city_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "postal_code": {
+      "type": "integer",
+      "example": 224352
+    },
+    "receiver": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Adinda Kirana"
+        },
+        "phone_number": {
+          "type": "string",
+          "example": "081800100700"
+        }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "array",
+          "items": {}
+        },
+        "location_type": {
+          "type": "string",
+          "example": "APPROXIMATE"
+        }
+      }
+    }
+  }
+}
