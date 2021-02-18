@@ -2,61 +2,6 @@
   "title": "demands",
   "type": "object",
   "description": "",
-  "properties": {
-    "id": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "user_id": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "title": {
-      "type": "string",
-      "example": "Saya butuh bawang merah"
-    },
-    "category_item_id": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "item": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "example": "Bawang Merah"
-        },
-        "qty": {
-          "type": "string",
-          "example": "10"
-        },
-        "unit": {
-          "type": "string",
-          "example": "Kwintal"
-        }
-      }
-    },
-    "city_id": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "description": {
-      "type": "string",
-      "example": "Tawarkan bawang merah terbaik kamu"
-    },
-    "deadline": {
-      "type": "string",
-      "format": "date"
-    },
-    "status": {
-      "type": "string",
-      "enum": [
-        "OPEN",
-        "CLOSE"
-      ],
-      "default": "OPEN"
-    }
-  },
   "x-examples": {
     "Example": {
       "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
@@ -73,5 +18,81 @@
       "deadline": "2019-08-24",
       "status": "OPEN"
     }
-  }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "user_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "title": {
+      "type": "string",
+      "example": "Saya butuh bawang merah",
+      "default": "Saya butuh bawang merah"
+    },
+    "category_item_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "item": {
+      "type": "object",
+      "required": [
+        "name",
+        "qty",
+        "unit"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Bawang Merah",
+          "default": "Bawang Merah"
+        },
+        "qty": {
+          "type": "string",
+          "example": "10",
+          "default": "10"
+        },
+        "unit": {
+          "type": "string",
+          "example": "Kwintal",
+          "default": "Kwintal"
+        }
+      }
+    },
+    "city_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "description": {
+      "type": "string",
+      "example": "Tawarkan bawang merah terbaik kamu",
+      "default": "Tawarkan bawang merah terbaik kamu"
+    },
+    "deadline": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "CLOSE"
+      ],
+      "default": "OPEN"
+    }
+  },
+  "required": [
+    "id",
+    "user_id",
+    "title",
+    "category_item_id",
+    "item",
+    "city_id",
+    "description",
+    "deadline",
+    "status"
+  ]
 }

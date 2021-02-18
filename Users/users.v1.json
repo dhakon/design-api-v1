@@ -2,27 +2,27 @@
   "description": "",
   "type": "object",
   "x-examples": {
-    "example-1": {
-      "id": "string",
-      "first_name": "string",
-      "last_name": "string",
-      "email": "string",
-      "phone_number": "string",
-      "avatar": "string",
+    "Example": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "first_name": "Muhammad",
+      "last_name": "Najib",
+      "email": "najib@gmail.com",
+      "phone_number": "+6281234567890",
+      "avatar": "http://example.com",
       "gender": null,
-      "role": null,
-      "password": "string",
-      "confirm_password": "string",
-      "status": "string",
+      "role": "DEMANDER",
+      "password": "pa$$word",
+      "confirm_password": "pa$$word",
+      "status": "ACTIVE",
       "email_verified": true,
       "phone_verified": true,
       "password_change_log": [
         {
           "currently": true,
-          "password": "string",
-          "previous password": "string",
+          "password": "pa$$word",
+          "previous password": "pa$$word",
           "location": "string",
-          "changed_at": "string"
+          "changed_at": "2019-08-24T14:15:22Z"
         }
       ]
     }
@@ -30,42 +30,64 @@
   "properties": {
     "id": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "format": "uuid"
     },
     "first_name": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "default": "Muhammad"
     },
     "last_name": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "default": "Najib"
     },
     "email": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "format": "email",
+      "default": "najib@gmail.com"
     },
     "phone_number": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "default": "+6281234567890"
     },
     "avatar": {
       "type": "string",
       "minLength": 1,
       "format": "uri"
     },
-    "gender": {},
-    "role": {},
+    "gender": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "role": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": "DEMANDER"
+    },
     "password": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "format": "password"
     },
     "confirm_password": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "format": "password"
     },
     "status": {
-      "type": "string",
-      "minLength": 1
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": "ACTIVE"
     },
     "email_verified": {
       "type": "boolean"
@@ -85,11 +107,13 @@
           },
           "password": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "format": "password"
           },
           "previous password": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "format": "password"
           },
           "location": {
             "type": "string",
@@ -97,7 +121,8 @@
           },
           "changed_at": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "format": "date-time"
           }
         },
         "required": [
@@ -117,6 +142,7 @@
     "email",
     "phone_number",
     "avatar",
+    "role",
     "password",
     "confirm_password",
     "status",

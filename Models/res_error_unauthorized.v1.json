@@ -1,19 +1,18 @@
 {
-  "title": "res_success",
-  "type": "object",
-  "x-examples": {},
   "description": "",
+  "type": "object",
   "properties": {
     "code": {
       "type": "number",
-      "default": 200
+      "default": 401
     },
     "success": {
       "type": "boolean"
     },
     "message": {
       "type": "string",
-      "default": "Get data successfully"
+      "minLength": 1,
+      "default": "The client passed in the invalid Auth token. Client should refresh the token and then try again."
     }
   },
   "required": [

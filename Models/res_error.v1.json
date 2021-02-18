@@ -43,5 +43,6 @@
     "success",
     "message",
     "errors"
-  ]
+  ],
+  "x-examples": {}
 }

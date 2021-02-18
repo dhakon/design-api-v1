@@ -1,68 +1,6 @@
 {
   "description": "",
   "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "minLength": 1
-    },
-    "title": {
-      "type": "string",
-      "minLength": 1
-    },
-    "category_item_id": {
-      "type": "string",
-      "minLength": 1
-    },
-    "item": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "minLength": 1
-        },
-        "qty": {
-          "type": "string",
-          "minLength": 1
-        },
-        "unit": {
-          "type": "string",
-          "minLength": 1
-        }
-      },
-      "required": [
-        "name",
-        "qty",
-        "unit"
-      ]
-    },
-    "city_id": {
-      "type": "string",
-      "minLength": 1
-    },
-    "description": {
-      "type": "string",
-      "minLength": 1
-    },
-    "deadline": {
-      "type": "string",
-      "minLength": 1
-    },
-    "status": {
-      "type": "string",
-      "minLength": 1
-    }
-  },
-  "required": [
-    "id",
-    "title",
-    "category_item_id",
-    "item",
-    "city_id",
-    "description",
-    "deadline",
-    "status"
-  ],
   "x-examples": {
     "Example": {
       "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
@@ -78,5 +16,81 @@
       "deadline": "2019-08-24",
       "status": "OPEN"
     }
-  }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "format": "uuid"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "default": "Saya butuh bawang merah"
+    },
+    "category_item_id": {
+      "type": "string",
+      "minLength": 1,
+      "format": "uuid"
+    },
+    "item": {
+      "type": "object",
+      "required": [
+        "name",
+        "qty",
+        "unit"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "default": "Bawang Merah"
+        },
+        "qty": {
+          "type": "string",
+          "minLength": 1,
+          "default": "10"
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1,
+          "default": "Kwintal"
+        }
+      }
+    },
+    "city_id": {
+      "type": "string",
+      "minLength": 1,
+      "format": "uuid"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "default": "Tawarkan bawang merah terbaik kamu"
+    },
+    "deadline": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1,
+      "default": "OPEN",
+      "enum": [
+        "OPEN",
+        "CLOSE"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "category_item_id",
+    "item",
+    "city_id",
+    "description",
+    "deadline",
+    "status"
+  ]
 }
