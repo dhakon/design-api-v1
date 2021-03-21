@@ -1,0 +1,73 @@
+{
+  "type": "array",
+  "description": "",
+  "minItems": 1,
+  "uniqueItems": true,
+  "x-examples": {
+    "Example": [
+      {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "name": "Bawang Merah",
+        "category_id": "8de4c9fd-61a4-4c0b-bf88-0ed3a0fe3fa2",
+        "images": [
+          "http://example.com/product-1",
+          "http://example.com/product-1",
+          "http://example.com/product-1"
+        ]
+      },
+      {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "name": "Beras",
+        "category_id": "8de4c9fd-61a4-4c0b-bf88-0ed3a0fe3fa2",
+        "images": [
+          "http://example.com/product-1",
+          "http://example.com/product-1",
+          "http://example.com/product-1"
+        ]
+      },
+      {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "name": "Padi",
+        "category_id": "8de4c9fd-61a4-4c0b-bf88-0ed3a0fe3fa2",
+        "images": [
+          "http://example.com/product-1",
+          "http://example.com/product-1",
+          "http://example.com/product-1"
+        ]
+      }
+    ]
+  },
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "format": "uuid"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "default": "Bawang Merah"
+      },
+      "category_id": {
+        "type": "string",
+        "minLength": 1,
+        "format": "uuid"
+      },
+      "images": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "default": "http://example.com/product-1"
+        }
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "category_id",
+      "images"
+    ]
+  }
+}

@@ -1,9 +1,85 @@
 {
   "title": "bids",
   "type": "object",
+  "x-examples": {
+    "Example": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "demand_id": "43f27aea-0704-4c30-94e4-9bf86dea957e",
+      "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+      "price": 17000,
+      "unit": "Kilo",
+      "images": [
+        "http://example.com/product-1",
+        "http://example.com/product-1",
+        "http://example.com/product-1",
+        "http://example.com/product-1"
+      ],
+      "quality": "Kelas B",
+      "description": "Saya sudah",
+      "status": "SUBMITTED"
+    }
+  },
   "properties": {
     "id": {
-      "type": "string"
+      "type": "string",
+      "format": "uuid"
+    },
+    "demand_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "user_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "price": {
+      "type": "number",
+      "default": 17000
+    },
+    "unit": {
+      "type": "string",
+      "default": "Kilo"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "default": "http://example.com/avatar"
+      }
+    },
+    "quality": {
+      "type": "string",
+      "enum": [
+        "Kelas A",
+        "Kelas B",
+        "Kelas C"
+      ],
+      "default": "Kelas B"
+    },
+    "description": {
+      "type": "string",
+      "default": "Saya sudah"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "SUBMITTED",
+        "SELECTED",
+        "UNSELECTED",
+        "CANCELED"
+      ],
+      "default": "SUBMITTED"
     }
-  }
+  },
+  "required": [
+    "id",
+    "demand_id",
+    "user_id",
+    "price",
+    "unit",
+    "images",
+    "quality",
+    "description",
+    "status"
+  ]
 }

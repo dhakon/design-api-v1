@@ -71,13 +71,13 @@
     "phone_verified"
   ],
   "x-examples": {
-    "example-1": {
+    "Example": {
       "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
       "first_name": "Muhammad",
       "last_name": "Najib",
       "email": "najib@gmail.com",
       "phone_number": "+6281234567890",
-      "avatar": "http://example.com",
+      "avatar": "http://example.com/avatar",
       "gender": null,
       "role": "DEMANDER",
       "status": "ACTIVE",

@@ -16,7 +16,27 @@
       "city_id": "4e4d55fa-e3bf-4bdb-9825-519278b117b5",
       "description": "Tawarkan bawang merah terbaik kamu",
       "deadline": "2019-08-24",
-      "status": "OPEN"
+      "status": "OPEN",
+      "bidders": {
+        "count": 3,
+        "data": [
+          {
+            "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+            "price": 17000,
+            "description": "Saya sudah"
+          },
+          {
+            "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+            "price": 17000,
+            "description": "Saya sudah"
+          },
+          {
+            "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+            "price": 17000,
+            "description": "Saya sudah"
+          }
+        ]
+      }
     }
   },
   "properties": {
@@ -82,6 +102,43 @@
         "CLOSE"
       ],
       "default": "OPEN"
+    },
+    "bidders": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "number",
+          "default": 1
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "user_id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "price": {
+                "type": "number",
+                "default": 17000
+              },
+              "description": {
+                "type": "string",
+                "default": "Saya sudah"
+              }
+            },
+            "required": [
+              "user_id",
+              "price",
+              "description"
+            ]
+          }
+        }
+      },
+      "required": [
+        "count"
+      ]
     }
   },
   "required": [
