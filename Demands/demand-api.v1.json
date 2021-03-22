@@ -1,0 +1,359 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "demand-api",
+    "version": "1.0"
+  },
+  "host": "dhakon.com",
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "paths": {
+    "/demands": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "../Models/res_success.v1.json"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "./demands.v1.json"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "examples": {
+              "Example": {
+                "code": 200,
+                "success": true,
+                "message": "Get data successfully",
+                "data": [
+                  {
+                    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                    "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+                    "title": "Saya butuh bawang merah",
+                    "category_item_id": "46fa068d-c0a7-40ac-ad84-951892b10de9",
+                    "item": {
+                      "name": "Bawang Merah",
+                      "qty": "10",
+                      "unit": "Kwintal"
+                    },
+                    "city_id": "4e4d55fa-e3bf-4bdb-9825-519278b117b5",
+                    "description": "Tawarkan bawang merah terbaik kamu",
+                    "deadline": "2019-08-24",
+                    "status": "OPEN",
+                    "bidders": {
+                      "count": 1,
+                      "data": [
+                        {
+                          "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+                          "price": 17000,
+                          "description": "Saya sudah"
+                        }
+                      ]
+                    },
+                    "need_sample": true
+                  },
+                  {
+                    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                    "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+                    "title": "Saya butuh bawang merah",
+                    "category_item_id": "46fa068d-c0a7-40ac-ad84-951892b10de9",
+                    "item": {
+                      "name": "Bawang Merah",
+                      "qty": "10",
+                      "unit": "Kwintal"
+                    },
+                    "city_id": "4e4d55fa-e3bf-4bdb-9825-519278b117b5",
+                    "description": "Tawarkan bawang merah terbaik kamu",
+                    "deadline": "2019-08-24",
+                    "status": "OPEN",
+                    "bidders": {
+                      "count": 1,
+                      "data": [
+                        {
+                          "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+                          "price": 17000,
+                          "description": "Saya sudah"
+                        }
+                      ]
+                    },
+                    "need_sample": true
+                  },
+                  {
+                    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                    "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+                    "title": "Saya butuh bawang merah",
+                    "category_item_id": "46fa068d-c0a7-40ac-ad84-951892b10de9",
+                    "item": {
+                      "name": "Bawang Merah",
+                      "qty": "10",
+                      "unit": "Kwintal"
+                    },
+                    "city_id": "4e4d55fa-e3bf-4bdb-9825-519278b117b5",
+                    "description": "Tawarkan bawang merah terbaik kamu",
+                    "deadline": "2019-08-24",
+                    "status": "OPEN",
+                    "bidders": {
+                      "count": 1,
+                      "data": [
+                        {
+                          "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+                          "price": 17000,
+                          "description": "Saya sudah"
+                        }
+                      ]
+                    },
+                    "need_sample": true
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../Models/res_error_unauthorized.v1.json"
+            },
+            "examples": {
+              "example-1": {
+                "code": 401,
+                "success": true,
+                "message": "The client passed in the invalid Auth token. Client should refresh the token and then try again."
+              }
+            }
+          }
+        },
+        "operationId": "get-demands",
+        "parameters": [
+          {
+            "type": "string",
+            "in": "header",
+            "name": "Content-Type",
+            "required": true,
+            "default": "application/json"
+          }
+        ],
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/demands/filter": {
+      "parameters": [],
+      "get": {
+        "summary": "",
+        "operationId": "get-demands-filter-qty",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "../Models/res_success.v1.json"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "./demands.v1.json"
+                    }
+                  }
+                }
+              ]
+            },
+            "examples": {
+              "example-1": {
+                "code": 200,
+                "success": true,
+                "message": "Get data successfully",
+                "data": {
+                  "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                  "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+                  "title": "Saya butuh bawang merah",
+                  "category_item_id": "46fa068d-c0a7-40ac-ad84-951892b10de9",
+                  "item": {
+                    "name": "Bawang Merah",
+                    "qty": "10",
+                    "unit": "Kwintal"
+                  },
+                  "city_id": "4e4d55fa-e3bf-4bdb-9825-519278b117b5",
+                  "description": "Tawarkan bawang merah terbaik kamu",
+                  "deadline": "2019-08-24",
+                  "status": "OPEN",
+                  "bidders": {
+                    "count": 1,
+                    "data": [
+                      {
+                        "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+                        "price": 17000,
+                        "description": "Saya sudah"
+                      }
+                    ]
+                  },
+                  "need_sample": true
+                }
+              }
+            }
+          }
+        },
+        "description": "",
+        "parameters": [
+          {
+            "type": "string",
+            "in": "header",
+            "name": "Content-Type",
+            "description": "application-json"
+          },
+          {
+            "type": "array",
+            "in": "query",
+            "name": "qty",
+            "required": true,
+            "minItems": 1,
+            "maxItems": 2,
+            "default": "[1, 10]"
+          },
+          {
+            "type": "string",
+            "in": "query",
+            "name": "item",
+            "default": "Bawang Merah",
+            "required": true
+          },
+          {
+            "type": "string",
+            "in": "query",
+            "name": "status",
+            "default": "OPEN",
+            "required": true
+          },
+          {
+            "type": "boolean",
+            "in": "query",
+            "name": "sample",
+            "required": true,
+            "default": "true"
+          }
+        ],
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/demands/seacrh": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "../Models/res_success.v1.json"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "./demands.v1.json"
+                    }
+                  }
+                }
+              ]
+            },
+            "examples": {
+              "example-1": {
+                "code": 200,
+                "success": true,
+                "message": "Search data successfully",
+                "data": {
+                  "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                  "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+                  "title": "Saya butuh cabe merah",
+                  "category_item_id": "46fa068d-c0a7-40ac-ad84-951892b10de9",
+                  "item": {
+                    "name": "Cabe",
+                    "qty": "10",
+                    "unit": "Kwintal"
+                  },
+                  "city_id": "4e4d55fa-e3bf-4bdb-9825-519278b117b5",
+                  "description": "Tawarkan bawang merah terbaik kamu",
+                  "deadline": "2019-08-24",
+                  "status": "OPEN",
+                  "bidders": {
+                    "count": 1,
+                    "data": [
+                      {
+                        "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
+                        "price": 17000,
+                        "description": "Saya sudah"
+                      }
+                    ]
+                  },
+                  "need_sample": true
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-demands-seacrh",
+        "parameters": [
+          {
+            "type": "string",
+            "in": "query",
+            "name": "q",
+            "default": "cabe",
+            "required": true
+          },
+          {
+            "type": "string",
+            "in": "header",
+            "name": "Content-Type",
+            "description": "application/json",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "parameters": []
+    }
+  },
+  "definitions": {},
+  "securityDefinitions": {
+    "Token": {
+      "type": "https",
+      "scheme": "bearer",
+      "description": ""
+    }
+  },
+  "basePath": "/api/v1"
+}

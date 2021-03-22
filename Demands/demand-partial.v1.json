@@ -22,19 +22,10 @@
             "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
             "price": 17000,
             "description": "Saya sudah"
-          },
-          {
-            "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
-            "price": 17000,
-            "description": "Saya sudah"
-          },
-          {
-            "user_id": "a169451c-8525-4352-b8ca-070dd449a1a5",
-            "price": 17000,
-            "description": "Saya sudah"
           }
         ]
-      }
+      },
+      "need_sample": true
     }
   },
   "properties": {
@@ -138,6 +129,9 @@
       "required": [
         "count"
       ]
+    },
+    "need_sample": {
+      "type": "boolean"
     }
   },
   "required": [
@@ -148,6 +142,7 @@
     "city_id",
     "description",
     "deadline",
-    "status"
+    "status",
+    "need_sample"
   ]
 }

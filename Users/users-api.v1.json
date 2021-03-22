@@ -543,10 +543,7 @@
                 "type": "object",
                 "properties": {
                   "role": {
-                    "type": [
-                      "string",
-                      "null"
-                    ],
+                    "type": "string",
                     "minLength": 1,
                     "default": "DEMANDER"
                   }
@@ -793,65 +790,75 @@
                 "description": "",
                 "type": "object",
                 "properties": {
-                  "title": {
-                    "type": "string",
-                    "minLength": 1
-                  },
                   "category_item_id": {
                     "type": "string",
-                    "minLength": 1
+                    "minLength": 1,
+                    "format": "uuid"
                   },
                   "item": {
                     "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "qty": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "unit": {
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    },
                     "required": [
                       "name",
                       "qty",
                       "unit"
-                    ]
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "default": "Bawang Merah"
+                      },
+                      "qty": {
+                        "default": "5",
+                        "type": "number"
+                      },
+                      "unit": {
+                        "type": "string",
+                        "minLength": 1,
+                        "default": "Kilo"
+                      }
+                    }
                   },
                   "city_id": {
                     "type": "string",
-                    "minLength": 1
+                    "minLength": 1,
+                    "format": "uuid"
                   },
                   "description": {
                     "type": "string",
+                    "minLength": 1,
+                    "default": "Tawarkan bawang merah terbaik kamu"
+                  },
+                  "deadline": {
+                    "type": "string",
                     "minLength": 1
+                  },
+                  "need_sample": {
+                    "type": "boolean"
                   }
                 },
                 "required": [
-                  "title",
                   "category_item_id",
                   "item",
                   "city_id",
-                  "description"
+                  "description",
+                  "deadline",
+                  "need_sample"
                 ]
               },
               "examples": {
-                "Example": {
+                "example-1": {
                   "value": {
-                    "title": "Saya butuh bawang merah",
                     "category_item_id": "46fa068d-c0a7-40ac-ad84-951892b10de9",
                     "item": {
                       "name": "Bawang Merah",
-                      "qty": "10",
-                      "unit": "Kwintal"
+                      "qty": "5",
+                      "unit": "Kilo"
                     },
                     "city_id": "4e4d55fa-e3bf-4bdb-9825-519278b117b5",
-                    "description": "Tawarkan bawang merah terbaik kamu"
+                    "description": "Tawarkan bawang merah terbaik kamu",
+                    "deadline": "string",
+                    "need_sample": true
                   }
                 }
               }
@@ -977,35 +984,30 @@
                 "description": "",
                 "type": "object",
                 "properties": {
-                  "title": {
-                    "type": "string",
-                    "minLength": 1
-                  },
                   "category_item_id": {
                     "type": "string",
                     "minLength": 1
                   },
                   "item": {
                     "type": "object",
+                    "required": [
+                      "name",
+                      "qty",
+                      "unit"
+                    ],
                     "properties": {
                       "name": {
                         "type": "string",
                         "minLength": 1
                       },
                       "qty": {
-                        "type": "string",
-                        "minLength": 1
+                        "type": "number"
                       },
                       "unit": {
                         "type": "string",
                         "minLength": 1
                       }
-                    },
-                    "required": [
-                      "name",
-                      "qty",
-                      "unit"
-                    ]
+                    }
                   },
                   "city_id": {
                     "type": "string",
@@ -1014,10 +1016,12 @@
                   "description": {
                     "type": "string",
                     "minLength": 1
+                  },
+                  "need_sample": {
+                    "type": "boolean"
                   }
                 },
                 "required": [
-                  "title",
                   "category_item_id",
                   "item",
                   "city_id",
@@ -1035,7 +1039,8 @@
                       "unit": "Kwintal"
                     },
                     "city_id": "4e4d55fa-e3bf-4bdb-9825-519278b117b5",
-                    "description": "Tawarkan bawang merah terbaik kamu"
+                    "description": "Tawarkan bawang merah terbaik kamu",
+                    "need_sample": true
                   }
                 }
               }
@@ -1099,7 +1104,7 @@
     "schemas": {},
     "securitySchemes": {
       "Token": {
-        "type": "http",
+        "type": "https",
         "scheme": "bearer",
         "description": ""
       }
