@@ -102,14 +102,6 @@
       "items": {
         "type": "object",
         "properties": {
-          "currently": {
-            "type": "boolean"
-          },
-          "password": {
-            "type": "string",
-            "minLength": 1,
-            "format": "password"
-          },
           "previous password": {
             "type": "string",
             "minLength": 1,
@@ -126,8 +118,6 @@
           }
         },
         "required": [
-          "currently",
-          "password",
           "previous password",
           "location",
           "changed_at"

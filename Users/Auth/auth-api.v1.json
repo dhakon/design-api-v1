@@ -64,15 +64,11 @@
                         "confirm_password": "pa$$word",
                         "password_change_log": [
                           {
-                            "currently": true,
-                            "password": "pa$$word",
                             "previous password": "pa$$word",
                             "location": "Jakarta, Jakarta",
                             "changed_at": "2019-08-24T14:15:22Z"
                           },
                           {
-                            "currently": false,
-                            "password": "pa$$word",
                             "previous password": "pa$$word",
                             "location": "Jakarta, Jakarta",
                             "changed_at": "2019-08-24T14:15:22Z"
